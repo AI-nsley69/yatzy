@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: 'Poppins', sans-serif;
+  @apply bg-neutral;
+}
+
+.navbar-thingy {
+  @apply text-center bg-primary flex justify-center p-2;
+}
+
+.navbar-text {
+  @apply text-3xl text-primary-content;
+}
