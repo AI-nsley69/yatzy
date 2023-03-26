@@ -1,8 +1,15 @@
 // Deploy a vue site
+name: Deploy Vue Site
+
 on:
   push:
     branches:
       - master
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
