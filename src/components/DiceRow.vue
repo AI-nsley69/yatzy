@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-    <div v-for="item in items" :key="item.value">
+    <div v-for="item in items">
         <i :class="['fas', getDiceNames(item.value)]" class="text-3xl" ></i>
     </div>
 </template>
