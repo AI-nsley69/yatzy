@@ -3,7 +3,7 @@
   import DiceRow from './components/DiceRow.vue';
 
   import { ref } from 'vue';
-  const currentRoll = [1, 1, 1, 1,1];
+  const currentRoll = [ref(1), ref(1), ref(1), ref(1), ref(1)];
   const totalScore = ref(5);
 
   const showHistory = ref(false);
@@ -11,9 +11,9 @@
 
   const rollDice = () => {
     for (let i = 0; i < currentRoll.length; i++) {
-      currentRoll[i] = Math.floor(Math.random() * 6) + 1;
+      currentRoll[i].value = Math.floor(Math.random() * 6) + 1;
     }
-    totalScore.value = currentRoll.reduce((acc, die) => acc + die, 0);
+    totalScore.value = currentRoll.reduce((acc, die) => acc + die.value, 0);
   };
 
   const getDiceNames = (index) => {
@@ -31,7 +31,7 @@
   const reset = () => {
     totalScore.value = 5;
     currentRoll.forEach((die) => {
-      die = 1;
+      die.value = 1;
     });
   };
 </script>

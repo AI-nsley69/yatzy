@@ -1,18 +1,10 @@
 <script>
 export default {
-    props: {
-        items: {
-            type: Array,
-            required: true,
-        },
+    data() {
+        return this.items;
     },
-    watch: {
-        items: {
-            handler: function (newVal, oldVal) {
-                console.log(newVal);
-                // this.currentRoll = newVal[newVal.length - 1];
-            },
-        },
+    props: {
+        items: Array,
     },
     methods: {
         getDiceNames(index) {
@@ -30,6 +22,8 @@ export default {
 }
 </script>
 
-<template v-for="item in items">
-    <i :class="['fas', getDiceNames(item)]" class="text-3xl" ></i>
+<template>
+    <div v-for="item in items" :key="item.value">
+        <i :class="['fas', getDiceNames(item.value)]" class="text-3xl" ></i>
+    </div>
 </template>
