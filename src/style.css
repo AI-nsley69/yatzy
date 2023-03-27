@@ -6,7 +6,7 @@
 
 html {
   font-family: 'Poppins', sans-serif;
-  @apply bg-neutral;
+  @apply bg-neutral min-h-screen;
 }
 
 .navbar-thingy {
@@ -15,4 +15,8 @@ html {
 
 .navbar-text {
   @apply text-3xl text-primary-content;
+}
+
+.dice-row > i {
+  @apply text-4xl;
 }
