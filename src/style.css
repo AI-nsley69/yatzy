@@ -6,7 +6,7 @@
 
 html {
   font-family: 'Poppins', sans-serif;
-  @apply bg-neutral min-h-screen;
+  @apply bg-base-100 min-h-screen;
 }
 
 .navbar-thingy {

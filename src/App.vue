@@ -1,13 +1,19 @@
 <script setup>
+  import History from './components/History.vue';
+  import DiceRow from './components/DiceRow.vue';
+
   import { ref } from 'vue';
-  const currentRoll = [ref(1), ref(1), ref(1), ref(1), ref(1)];
+  const currentRoll = [1, 1, 1, 1,1];
   const totalScore = ref(5);
 
+  const showHistory = ref(false);
+  const history = ref([1, 1, 1, 1, 1]);
+
   const rollDice = () => {
-    currentRoll.forEach((die) => {
-      die.value = Math.floor(Math.random() * 6) + 1;
-    });
-    totalScore.value = currentRoll.reduce((acc, die) => acc + die.value, 0);
+    for (let i = 0; i < currentRoll.length; i++) {
+      currentRoll[i] = Math.floor(Math.random() * 6) + 1;
+    }
+    totalScore.value = currentRoll.reduce((acc, die) => acc + die, 0);
   };
 
   const getDiceNames = (index) => {
@@ -22,10 +28,10 @@
     return diceNames[index - 1] || 'fa-dice-one';
   };
 
-  const onDelete = () => {
-    totalScore.value = 15;
+  const reset = () => {
+    totalScore.value = 5;
     currentRoll.forEach((die) => {
-      die.value = 1;
+      die = 1;
     });
   };
 </script>
@@ -35,29 +41,29 @@
       <h1 class="navbar-text">Yatzy</h1>
   </div>
   <div class="flex flex-col px-8 py-8 justify-center w-min">
-    <div class="flex flex-col justify-center items-center bg-secondary lg:w-64 lg:h-64 md:w-40 md:h-40 rounded-xl p-1">
+    <div class="flex flex-col justify-center items-center bg-secondary lg:w-64 lg:h-48 md:w-40 md:h-40 rounded-xl p-1">
       <div class="text-2xl flex flex-row gap-1">
         <h3>Total score: </h3>
         <h3>{{ totalScore }}</h3>
       </div>
       <div class="flex flex-row justify-evenly gap-2 dice-row">
-        <template v-for="(die, index) in currentRoll">
-          <i :class="['fas', getDiceNames(die.value)]" class="text-3xl" ></i>
-        </template>
+        <DiceRow :items="currentRoll" />
       </div>
       <button 
         type="input"
         @click="rollDice()"
-        class="bg-primary text-white rounded-xl w-16 h-10 mt-4 hover:bg-primary-focus active:simple-shadow"
+        class="bg-primary text-white rounded-xl w-16 h-10 mt-4 active:bg-primary-focus"
       >
         Roll
       </button>
     </div>
 
-    <div class="info-row flex flex-row justify-evenly items-center bg-info w-32 h-10 rounded-xl self-center my-4">
-      <button><i class="fa-solid fa-question"></i></button>
-      <button><i class="fa-solid fa-clock-rotate-left"></i></button>
-      <button><i class="fa-solid fa-trash"></i></button>
+    <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-32 h-10 rounded-xl self-center my-4">
+      <button><i class="fa-solid fa-question text-info"></i></button>
+      <button type="button" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
+      <button type="button" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
+
+  <History v-if="showHistory" @close="showHistory = false" :history="history" />
 </template>
