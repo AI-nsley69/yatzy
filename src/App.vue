@@ -1,10 +1,9 @@
 <script setup>
   import { ref } from 'vue';
-  const currentRoll = [ref(1), ref(2), ref(3), ref(4), ref(5)];
-  const totalScore = ref(15);
+  const currentRoll = [ref(1), ref(1), ref(1), ref(1), ref(1)];
+  const totalScore = ref(5);
 
   const rollDice = () => {
-    console.log('Rolling dice');
     currentRoll.forEach((die) => {
       die.value = Math.floor(Math.random() * 6) + 1;
     });
