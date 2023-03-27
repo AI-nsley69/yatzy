@@ -20,3 +20,7 @@ html {
 .dice-row > i {
   @apply text-4xl;
 }
+
+.info-row > button {
+  @apply text-2xl;
+}
