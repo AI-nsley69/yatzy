@@ -6,4 +6,12 @@ export default defineConfig({
 
   plugins: [vue()],
   base: './',
+  optimizeDeps: {
+    include: ['linked-dep'],
+  },
+  build: {
+    commonjsOptions: {
+      include: [/linked-dep/, /node_modules/],
+    },
+  },
 })
