@@ -81,10 +81,16 @@
     </div>
 
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-32 h-10 rounded-xl self-center my-4">
-      <button title="Information button"><i class="fa-solid fa-question text-info"></i></button>
-      <button type="button" title="Toggle history popup" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
-      <button type="button" title="Clear history rolls" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
+      <button type="button" class="button" title="Information button"><i class="fa-solid fa-question text-info"></i></button>
+      <button type="button" class="button" title="Toggle history popup" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
+      <button type="button" class="button" title="Clear history rolls" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
   <HistoryPopup v-if="showHistory" :history="history" @close="showHistory = false" />
 </template>
+
+<style>
+.button {
+  @apply active:scale-[0.98] hover:scale-[1.02] hover:contrast-200 active:contrast-50;
+}
+</style>
