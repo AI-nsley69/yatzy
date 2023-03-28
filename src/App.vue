@@ -1,8 +1,30 @@
 <script setup>
-  import History from './components/History.vue';
+  import { ref } from 'vue';
   import DiceRow from './components/DiceRow.vue';
 
-  import { ref } from 'vue';
+  const saveState = (history) => {
+    localStorage.setItem('history', JSON.stringify(history));
+  };
+
+  const readState = () => {
+    const history = JSON.parse(localStorage.getItem('history'));
+    console.log(history)
+    if (history) {
+      return history;
+    }
+    return [];
+  };
+
+  const appendToHistory = () => {
+    history.value = [{
+      roll: currentRoll.map((die) => die.value),
+      score: totalScore.value,
+    }].concat(history.value).slice(0, 10);
+    saveState(history.value);
+  };
+
+  const history = ref(readState());
+
   const currentRoll = [ref(1), ref(1), ref(1), ref(1), ref(1)];
   const totalScore = ref(5);
 
@@ -11,18 +33,12 @@
       currentRoll[i].value = Math.floor(Math.random() * 6) + 1;
     }
     totalScore.value = currentRoll.reduce((acc, die) => acc + die.value, 0);
-  };
 
-  const getDiceNames = (index) => {
-    const diceNames = [
-      'fa-dice-one',
-      'fa-dice-two',
-      'fa-dice-three',
-      'fa-dice-four',
-      'fa-dice-five',
-      'fa-dice-six',
-    ];
-    return diceNames[index - 1] || 'fa-dice-one';
+    appendToHistory();
+    
+    history.value.forEach((item) => {
+      console.log(item.roll, item.score)
+    })
   };
 
   const reset = () => {
@@ -61,6 +77,4 @@
       <button type="button" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
-
-  <History v-if="showHistory" @close="showHistory = false" :history="history" />
 </template>
