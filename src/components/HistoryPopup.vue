@@ -25,7 +25,8 @@ export default {
             </div>
             <h5 v-if="history.length < 1">No recorded rolls.</h5>
             <button 
-                type="button" 
+                type="button"
+                title="Close Popup" 
                 @click="$emit('close')"
                 class="rounded-lg border-2 border-neutral-700 bg-neutral-200 hover:bg-neutral-400 text-primary-content text-sm p-1 m-1"
             >

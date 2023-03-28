@@ -63,26 +63,27 @@
   </div>
   <div class="flex flex-col px-8 py-8 justify-center md:w-min md:self-center" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
     <div class="flex flex-col justify-center items-center bg-secondary md:w-64 md:h-48 sm:w-40 sm:h-40 rounded-xl p-1 border-4 border-secondary-focus">
-      <div class="md:text-2xl sm:text-md flex flex-row gap-1">
-        <h3>Total score: </h3>
-        <h3>{{ totalScore }}</h3>
+      <div class="md:text-2xl sm:text-xl flex flex-row gap-1">
+        <h1>Total score: </h1>
+        <h1>{{ totalScore }}</h1>
       </div>
       <div class="flex flex-row justify-evenly gap-2 dice-row">
         <DiceRow :items="currentRoll" />
       </div>
       <button 
         type="input"
+        title="Roll Dice"
         @click="rollDice()"
-        class="bg-primary text-white rounded-xl sm:w-12 sm:h-5 md:w-16 md:h-10 md:mt-4 sm:mt-2 p-1 md:text-lg sm:text-sm active:bg-primary-focus"
+        class="bg-primary text-primary-content rounded-xl w-12 sm:h-5 md:w-20 md:h-10 md:mt-4 sm:mt-2 p-1 md:text-lg sm:text-sm active:bg-primary-focus"
       >
         Roll
       </button>
     </div>
 
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-32 h-10 rounded-xl self-center my-4">
-      <button><i class="fa-solid fa-question text-info"></i></button>
-      <button type="button" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
-      <button type="button" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
+      <button title="Information button"><i class="fa-solid fa-question text-info"></i></button>
+      <button type="button" title="Toggle history popup" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
+      <button type="button" title="Clear history rolls" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
   <HistoryPopup v-if="showHistory" :history="history" @close="showHistory = false" />
