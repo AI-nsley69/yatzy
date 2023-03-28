@@ -2,10 +2,11 @@
 import DiceRow from './DiceRow.vue';
 
 export default {
-    setup() {  
+    setup() { 
     },
     props: {
         history: Array,
+        showHistory: Boolean,
     },
     components: {
         DiceRow
@@ -14,13 +15,22 @@ export default {
 </script>
 
 <template>
-    <div class="wrapper">
-        <h1 class="text-2xl font-bold">History!</h1>
-        <div v-for="rolls in history.value" class="flex flex-row justify-evenly">
-            <DiceRow :items="history.value[rolls].roll" />
-            <h3>Score: {{ history.value[rolls].score }}</h3>
+    <transition name="modal">
+        <div class="wrapper">
+            <h1 class="text-2xl font-bold">History!</h1>
+            <div v-for="rolls in history.value" class="flex flex-row justify-evenly">
+                <DiceRow :items="history.value[rolls].roll" />
+                <h3>Score: {{ history.value[rolls].score }}</h3>
+            </div>
+            <button 
+                type="button" 
+                @click="$emit('close')"
+                class="rounded-lg border-2 border-neutral-700 bg-neutral-100 hover:bg-neutral-300 text-primary-content text-sm p-1"
+            >
+                Close
+            </button>
         </div>
-    </div>
+    </transition>
 </template>
 
 <style>

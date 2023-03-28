@@ -24,11 +24,8 @@
   };
 
   const history = ref(readState());
-  console.log(history.value)
-  for (const rolls in history.value) {
-    console.log(history.value[rolls].roll);
-  }
-  let showHistory = true;
+
+  let showHistory = ref(false);
 
   const currentRoll = [ref(1), ref(1), ref(1), ref(1), ref(1)];
   const totalScore = ref(5);
@@ -76,9 +73,9 @@
 
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-32 h-10 rounded-xl self-center my-4">
       <button><i class="fa-solid fa-question text-info"></i></button>
-      <button type="button" @click="showHistory = !showHistory"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
+      <button type="button" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
       <button type="button" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
-  <HistoryPopup v-if="showHistory" :history="history" />
+  <HistoryPopup v-if="showHistory" :history="history" @close="showHistory = false" />
 </template>
