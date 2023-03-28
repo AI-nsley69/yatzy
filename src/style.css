@@ -14,7 +14,7 @@ html {
 }
 
 .navbar-text {
-  @apply text-3xl text-primary-content;
+  @apply text-3xl text-accent;
 }
 
 .dice-row > i {
