@@ -2,6 +2,7 @@
   import { ref } from 'vue';
   import DiceRow from './components/DiceRow.vue';
   import HistoryPopup from './components/HistoryPopup.vue';
+  import InfoPopup from './components/InfoPopup.vue';
 
   const saveState = (history) => {
     localStorage.setItem('history', JSON.stringify(history));
@@ -26,6 +27,7 @@
   const history = ref(readState());
 
   let showHistory = ref(false);
+  let showInfo = ref(false);
 
   const currentRoll = [ref(1), ref(1), ref(1), ref(1), ref(1)];
   const totalScore = ref(5);
@@ -53,7 +55,7 @@
   };
 
   const isPopupActive = () => {
-    return showHistory.value;
+    return showHistory.value || showInfo.value;
   };
 </script>
 
@@ -81,12 +83,13 @@
     </div>
 
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-32 h-10 rounded-xl self-center my-4">
-      <button type="button" class="button" title="Information button"><i class="fa-solid fa-question text-info"></i></button>
+      <button type="button" class="button" title="Information button" @click="showInfo = true"><i class="fa-solid fa-question text-info"></i></button>
       <button type="button" class="button" title="Toggle history popup" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
       <button type="button" class="button" title="Clear history rolls" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
   <HistoryPopup v-if="showHistory" :history="history" @close="showHistory = false" />
+  <InfoPopup v-if="showInfo" @close="showInfo = false" />
 </template>
 
 <style>

@@ -3,7 +3,6 @@ import DiceRow from './DiceRow.vue';
 
 export default {
     setup() {
-        console.log(history)
     },
     props: {
         history: Object,
