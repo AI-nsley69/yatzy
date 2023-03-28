@@ -61,8 +61,8 @@
   <div class="navbar-thingy" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
       <h1 class="navbar-text">Yatzy</h1>
   </div>
-  <div class="flex flex-col px-8 py-8 justify-center md:w-min sm:self-center" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
-    <div class="flex flex-col justify-center items-center bg-secondary lg:w-64 lg:h-48 md:w-40 md:h-40 rounded-xl p-1 border-4 border-secondary-focus">
+  <div class="flex flex-col px-8 py-8 justify-center md:w-min md:self-center" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
+    <div class="flex flex-col justify-center items-center bg-secondary md:w-64 md:h-48 sm:w-40 sm:h-40 rounded-xl p-1 border-4 border-secondary-focus">
       <div class="md:text-2xl sm:text-md flex flex-row gap-1">
         <h3>Total score: </h3>
         <h3>{{ totalScore }}</h3>
