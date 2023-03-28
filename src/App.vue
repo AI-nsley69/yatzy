@@ -37,6 +37,8 @@
     totalScore.value = currentRoll.reduce((acc, die) => acc + die.value, 0);
 
     appendToHistory();
+
+    console.log(typeof history.value)
   };
 
   const reset = () => {
