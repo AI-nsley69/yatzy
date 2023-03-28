@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="wrapper bg-info text-sm w-4/5 md:w-3/5 md:text-normal blur-none shadow-lg p-4 justify-center m-2">
+    <div class="wrapper bg-info text-sm w-4/5 md:w-3/5 md:text-lg blur-none shadow-lg p-4 justify-center m-3">
         <h1 class="underline font-bold">Information</h1>
         <ul class="list-disc text-neutral-content">
             <li>This is a simple yatzy site, you can roll 5 dices at once and see your 10 latest rolls.</li>
