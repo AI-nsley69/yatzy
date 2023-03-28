@@ -37,8 +37,6 @@
     totalScore.value = currentRoll.reduce((acc, die) => acc + die.value, 0);
 
     appendToHistory();
-
-    console.log(typeof history.value)
   };
 
   const reset = () => {
@@ -46,16 +44,16 @@
     currentRoll.forEach((die) => {
       die.value = 1;
     });
-    history.value = ref([]);
+    history.value = [];
     saveState(history.value);
   };
 </script>
 
 <template>
-  <div class="navbar-thingy">
+  <div class="navbar-thingy" v-bind:class="showHistory ? 'blur-sm' : ''">
       <h1 class="navbar-text">Yatzy</h1>
   </div>
-  <div class="flex flex-col px-8 py-8 justify-center md:w-min sm:self-center">
+  <div class="flex flex-col px-8 py-8 justify-center md:w-min sm:self-center" v-bind:class="showHistory ? 'blur-sm' : ''">
     <div class="flex flex-col justify-center items-center bg-secondary lg:w-64 lg:h-48 md:w-40 md:h-40 rounded-xl p-1 border-4 border-secondary-focus">
       <div class="md:text-2xl sm:text-md flex flex-row gap-1">
         <h3>Total score: </h3>
