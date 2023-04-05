@@ -24,3 +24,7 @@ html {
 .info-row > button {
   @apply text-2xl;
 }
+
+.close-button {
+  @apply rounded-lg border-2 border-neutral-700 bg-neutral-200 hover:bg-neutral-400 text-primary-content text-sm 2xl:text-lg p-1 m-1 w-1/3;
+}

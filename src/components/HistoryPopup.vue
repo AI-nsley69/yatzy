@@ -33,7 +33,7 @@ export default {
                 type="button"
                 title="Close Popup" 
                 @click="$emit('close')"
-                class="rounded-lg border-2 border-neutral-700 bg-neutral-200 hover:bg-neutral-400 text-primary-content text-sm p-1 m-1"
+                class="close-button"
             >
                 Close
             </button>
