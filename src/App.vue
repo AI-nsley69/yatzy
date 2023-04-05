@@ -69,7 +69,7 @@
         <h1>Total score: </h1>
         <h1>{{ totalScore }}</h1>
       </div>
-      <div class="flex flex-row justify-evenly gap-2 dice-row">
+      <div class="flex flex-row justify-evenly gap-2 dice-row text-3xl lg:text-4xl">
         <DiceRow :items="currentRoll" />
       </div>
       <button 
