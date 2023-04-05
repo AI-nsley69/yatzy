@@ -88,6 +88,9 @@
       <button type="button" class="button" title="Clear history rolls" @click="reset"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
+
+  <a v-if="isPopupActive()" class="popup-background" @click="showHistory = false; showInfo = false;"></a>
+
   <HistoryPopup v-if="showHistory" :history="history" @close="showHistory = false" />
   <InfoPopup v-if="showInfo" @close="showInfo = false" />
 </template>
@@ -95,5 +98,9 @@
 <style>
 .button {
   @apply active:scale-[0.98] hover:scale-[1.02] hover:contrast-200 active:contrast-50;
+}
+
+.popup-background {
+  @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 cursor-pointer blur-sm;
 }
 </style>
