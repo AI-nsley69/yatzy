@@ -22,7 +22,7 @@ export default {
                 <h4>Latest first</h4>
             </div>
             <ul class="list-decimal w-max text-xl">
-                <li v-for="(rolls, index) in history" class="flex flex-row justify-evenly items-center align-center border-b-2 rounded-md border-neutral-900 w-full text-center text-3xl gap-1">
+                <li v-for="(rolls, index) in history" class="flex flex-row justify-evenly items-center align-center rounded-md border-neutral-900 border-b-2 w-full text-center text-3xl gap-1 px-2 my-1">
                     <h3 class="w-1/6 text-lg">{{ index + 1 }}.</h3>
                     <DiceRow :items="rolls.roll"/>
                     <h3 class="w-1/6 text-lg">{{ rolls.score }}</h3>
