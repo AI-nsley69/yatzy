@@ -4,7 +4,7 @@
 
 <template>
     <div class="wrapper bg-info text-sm w-4/5 md:w-3/5 md:text-lg blur-none shadow-lg p-4 justify-center m-3">
-        <h1 class="underline font-bold">Information</h1>
+        <h1 class="font-bold">Information</h1>
         <ul class="list-disc text-neutral-content">
             <li>This is a simple yatzy site, you can roll 5 dices at once and see your 10 latest rolls.</li>
             <li>This site was built through Vue and TailwindCSS using Vite as the building tooling.</li>

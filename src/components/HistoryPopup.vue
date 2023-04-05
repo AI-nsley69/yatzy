@@ -17,7 +17,7 @@ export default {
 <template>
     <transition name="modal">
         <div class="wrapper w-3/5 md:w-2/5 lg:w-1/5 blur-none shadow-lg p-4">
-            <h1 class="md:text-2xl sm:text-md font-bold underline m-1">History</h1>
+            <h1 class="md:text-2xl sm:text-md font-bold m-1">History</h1>
             <div v-for="rolls of history" class="flex flex-row justify-evenly items-center align-center border-b-2 rounded-md border-neutral-900 w-4/5 text-center">
                 <DiceRow :items="rolls.roll" />
                 <h3 class="w-1/6">{{ rolls.score }}</h3>
