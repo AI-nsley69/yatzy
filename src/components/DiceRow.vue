@@ -24,6 +24,6 @@ export default {
 
 <template>
     <div v-for="item in items">
-        <i :class="['fas', getDiceNames(item.value || item)]" class="text-3xl lg:text-4xl" ></i>
+        <i :class="['fas', getDiceNames(item.value || item)]"></i>
     </div>
 </template>

@@ -17,11 +17,17 @@ export default {
 <template>
     <transition name="modal">
         <div class="wrapper w-3/5 md:w-2/5 lg:w-1/5 blur-none shadow-lg p-4">
-            <h1 class="md:text-2xl sm:text-md font-bold m-1">History</h1>
-            <div v-for="rolls of history" class="flex flex-row justify-evenly items-center align-center border-b-2 rounded-md border-neutral-900 w-4/5 text-center">
-                <DiceRow :items="rolls.roll" />
-                <h3 class="w-1/6">{{ rolls.score }}</h3>
+            <div class="text-center">
+                <h1 class="md:text-2xl sm:text-md font-bold">History</h1>
+                <h4>Latest first</h4>
             </div>
+            <ul class="list-decimal w-max text-xl">
+                <li v-for="(rolls, index) in history" class="flex flex-row justify-evenly items-center align-center border-b-2 rounded-md border-neutral-900 w-full text-center text-3xl gap-1">
+                    <h3 class="w-1/6 text-lg">{{ index + 1 }}.</h3>
+                    <DiceRow :items="rolls.roll"/>
+                    <h3 class="w-1/6 text-lg">{{ rolls.score }}</h3>
+                </li>
+            </ul>
             <h5 v-if="history.length < 1">No recorded rolls.</h5>
             <button 
                 type="button"
@@ -41,5 +47,9 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.dice {
+    @apply text-3xl !important;
 }
 </style>
