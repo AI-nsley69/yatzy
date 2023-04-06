@@ -28,7 +28,7 @@ export default {
                     <h3 class="w-1/6 text-lg">{{ rolls.score }}</h3>
                 </li>
             </ul>
-            <h5 v-if="history.length < 1">No recorded rolls.</h5>
+            <h5 v-if="history.value.length < 1">No recorded rolls.</h5>
             <button 
                 type="button"
                 title="Close Popup" 

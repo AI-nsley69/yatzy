@@ -6,7 +6,6 @@
   import { Player } from './player.js';
 
   const player1 = new Player('p1');
-  console.log(player1.history);
 
   let showHistory = ref(false);
   let showInfo = ref(false);
