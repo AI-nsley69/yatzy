@@ -13,14 +13,15 @@ export default {
                 'fa-dice-five',
                 'fa-dice-six',
             ];
-            return diceNames[index - 1] || 'fa-dice-one';
+            // console.log(index, diceNames[index - 1]);
+            return diceNames[index.value - 1] || diceNames[index - 1] || 'fa-dice-one';
         },
     },
 }
 </script>
 
 <template>
-    <div v-for="item in items">
-        <i :class="['fas', getDiceNames(item.value || item)]"></i>
+    <div class="flex flex-row justify-evenly gap-2 m-1">
+        <i v-for="item in items" :class="['fas', getDiceNames(item)]"></i>
     </div>
 </template>
