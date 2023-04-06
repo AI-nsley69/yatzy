@@ -43,6 +43,6 @@ export class Player {
           die.value = 1;
         });
         this.history.value = [];
-        saveState();
+        this.saveState();
     };
 }
