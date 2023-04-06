@@ -1,8 +1,5 @@
 <script>
 export default {
-    data() {
-        return this.items;
-    },
     props: {
         items: Array,
     },
