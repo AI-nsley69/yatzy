@@ -6,6 +6,7 @@
   import { Player } from './player.js';
 
   const player1 = new Player('p1');
+  const player2 = new Player('p2');
 
   let showHistory = ref(false);
   let showInfo = ref(false);
@@ -25,8 +26,11 @@
   <div class="navbar-thingy" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
       <h1 class="navbar-text">Yatzy</h1>
   </div>
-  <div class="flex flex-col px-8 py-8 justify-center md:w-min md:self-center" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
-    <PlayerMenu :player="player1" :key="renderKey" @roll="forceRerender()"/>
+  <div class="flex flex-col px-8 py-8 justify-center self-center" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
+    <div class="flex flex-row justify-evenly gap-4">
+      <PlayerMenu :player="player1" :key="renderKey" @roll="forceRerender()"/>
+      <PlayerMenu :player="player2" :key="renderKey" @roll="forceRerender()"/>
+    </div>
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-48 h-10 rounded-xl self-center my-4 border-2 border-purple-900 border-opacity-30">
       <button type="button" class="button" title="Information button" @click="showInfo = true"><i class="fa-solid fa-question text-info"></i></button>
       <button type="button" class="button" title="Toggle history popup" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
