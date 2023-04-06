@@ -16,15 +16,15 @@ export default {
 
 <template>
     <transition name="modal">
-        <div class="wrapper w-3/5 md:w-2/5 lg:w-1/5 blur-none shadow-lg p-4">
+        <div class="wrapper w-4/5 md:w-2/5 lg:w-3/12 blur-none shadow-lg p-4">
             <div class="text-center">
                 <h1 class="md:text-2xl sm:text-md font-bold">History</h1>
                 <h4>Latest first</h4>
             </div>
-            <ul class="list-decimal w-max text-xl">
+            <ul class="list-decimal w-5/6 text-xl">
                 <li v-for="(rolls, index) in history.value" class="flex flex-row justify-evenly items-center align-center rounded-md border-neutral-900 border-b-2 w-full text-center text-3xl gap-1 px-2 my-1">
                     <h3 class="w-1/6 text-lg">{{ index + 1 }}.</h3>
-                    <DiceRow :items="rolls.roll"/>
+                    <DiceRow class="w-4/6" :items="rolls.roll"/>
                     <h3 class="w-1/6 text-lg">{{ rolls.score }}</h3>
                 </li>
             </ul>
