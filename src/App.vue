@@ -20,6 +20,11 @@
   const isPopupActive = () => {
     return showHistory.value || showInfo.value;
   };
+
+  const resetPlayers = () => {
+    player1.reset();
+    player2.reset();
+  }
 </script>
 
 <template>
@@ -34,7 +39,7 @@
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-48 h-10 rounded-xl self-center my-4 border-2 border-purple-900 border-opacity-30">
       <button type="button" class="button" title="Information button" @click="showInfo = true"><i class="fa-solid fa-question text-info"></i></button>
       <button type="button" class="button" title="Toggle history popup" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
-      <button type="button" class="button" title="Clear history rolls" @click="player1.reset()"><i class="fa-solid fa-trash text-error"></i></button>
+      <button type="button" class="button" title="Clear history rolls" @click="resetPlayers()"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
 
