@@ -24,6 +24,7 @@
   const resetPlayers = () => {
     player1.reset();
     player2.reset();
+    forceRerender();
   }
 </script>
 
