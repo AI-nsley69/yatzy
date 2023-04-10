@@ -5,20 +5,31 @@
   import PlayerMenu from './components/PlayerMenu.vue';
   import { Player } from './player.js';
 
+  // Setup each player
   const player1 = new Player('p1');
   const player2 = new Player('p2');
 
-  let showHistory = ref(false);
-  let showInfo = ref(false);
+  // Setup popup control
+  const Popups = {
+    NONE: 0,
+    HISTORY: 1,
+    INFO: 2,
+  }
+
+  const activePopup = ref(Popups.NONE);
+
+  const isPopupActive = () => {
+    return activePopup.value != Popups.NONE;
+  };
+
+  const closePopup = () => {
+    activePopup.value = Popups.NONE;
+  };
 
   const renderKey = ref(0);
 
   const forceRerender = () => {
     renderKey.value++;
-  };
-
-  const isPopupActive = () => {
-    return showHistory.value || showInfo.value;
   };
 
   const resetPlayers = () => {
@@ -38,16 +49,16 @@
       <PlayerMenu :player="player2" :key="renderKey" @roll="forceRerender()"/>
     </div>
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-48 h-10 rounded-xl self-center my-4 border-2 border-purple-900 border-opacity-30">
-      <button type="button" class="button" title="Information button" @click="showInfo = true"><i class="fa-solid fa-question text-info"></i></button>
-      <button type="button" class="button" title="Toggle history popup" @click="showHistory = true"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
+      <button type="button" class="button" title="Information button" @click="activePopup = Popups.INFO"><i class="fa-solid fa-question text-info"></i></button>
+      <button type="button" class="button" title="Toggle history popup" @click="activePopup = Popups.HISTORY"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
       <button type="button" class="button" title="Clear history rolls" @click="resetPlayers()"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
 
-  <a v-if="isPopupActive()" class="popup-background" @click="showHistory = false; showInfo = false;"></a>
+  <a v-if="isPopupActive()" class="popup-background" @click="closePopup()"></a>
 
-  <HistoryPopup v-if="showHistory" :history="player1.history" @close="showHistory = false" />
-  <InfoPopup v-if="showInfo" @close="showInfo = false" />
+  <HistoryPopup v-if="activePopup === Popups.HISTORY" :history="player1.history" @close="closePopup()" />
+  <InfoPopup v-if="activePopup === Popups.INFO" @close="closePopup()" />
 </template>
 
 <style>
