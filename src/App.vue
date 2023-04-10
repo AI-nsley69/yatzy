@@ -5,9 +5,11 @@
   import PlayerMenu from './components/PlayerMenu.vue';
   import { Player } from './player.js';
 
-  // Setup each player
-  const player1 = new Player('p1');
-  const player2 = new Player('p2');
+  // Setup the players
+  const players = [
+    new Player('p1'),
+    new Player('p2'),
+  ];
 
   // Setup popup control
   const Popups = {
@@ -26,15 +28,18 @@
     activePopup.value = Popups.NONE;
   };
 
+  // Setup for rerendering the player menu
   const renderKey = ref(0);
 
   const forceRerender = () => {
     renderKey.value++;
   };
 
+  // Calls the reset on all players and then triggers a rerender
   const resetPlayers = () => {
-    player1.reset();
-    player2.reset();
+    players.forEach(player => {
+      player.reset();
+    })
     forceRerender();
   }
 </script>
@@ -45,8 +50,8 @@
   </div>
   <div class="flex flex-col px-8 py-8 justify-center self-center" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
     <div class="flex flex-row justify-evenly gap-4">
-      <PlayerMenu :player="player1" :key="renderKey" @roll="forceRerender()"/>
-      <PlayerMenu :player="player2" :key="renderKey" @roll="forceRerender()"/>
+      <PlayerMenu :player="players[0]" :key="renderKey" @roll="forceRerender()"/>
+      <PlayerMenu :player="players[1]" :key="renderKey" @roll="forceRerender()"/>
     </div>
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-48 h-10 rounded-xl self-center my-4 border-2 border-purple-900 border-opacity-30">
       <button type="button" class="button" title="Information button" @click="activePopup = Popups.INFO"><i class="fa-solid fa-question text-info"></i></button>
@@ -57,7 +62,7 @@
 
   <a v-if="isPopupActive()" class="popup-background" @click="closePopup()"></a>
 
-  <HistoryPopup v-if="activePopup === Popups.HISTORY" :history="player1.history" @close="closePopup()" />
+  <HistoryPopup v-if="activePopup === Popups.HISTORY" :history="players[0].history" @close="closePopup()" />
   <InfoPopup v-if="activePopup === Popups.INFO" @close="closePopup()" />
 </template>
 
