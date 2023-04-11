@@ -62,7 +62,7 @@
 
   <a v-if="isPopupActive()" class="popup-background" @click="closePopup()"></a>
 
-  <HistoryPopup v-if="activePopup === Popups.HISTORY" :history="players[0].history" @close="closePopup()" />
+  <HistoryPopup v-if="activePopup === Popups.HISTORY" :players="players" @close="closePopup()" />
   <InfoPopup v-if="activePopup === Popups.INFO" @close="closePopup()" />
 </template>
 

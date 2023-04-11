@@ -5,8 +5,7 @@ export default {
     setup() {
     },
     props: {
-        history: Object,
-        showHistory: Boolean,
+        players: Array,
     },
     components: {
         DiceRow
@@ -16,19 +15,27 @@ export default {
 
 <template>
     <transition name="modal">
-        <div class="wrapper w-4/5 md:w-2/5 lg:w-3/12 blur-none shadow-lg p-4">
+        <div class="wrapper w-4/5 lg:w-1/2 blur-none shadow-lg p-2">
             <div class="text-center">
                 <h1 class="md:text-2xl sm:text-md font-bold">History</h1>
                 <h4>Latest first</h4>
             </div>
-            <ul class="list-decimal w-5/6 text-xl">
-                <li v-for="(rolls, index) in history.value" class="flex flex-row justify-evenly items-center align-center rounded-md border-neutral-900 border-b-2 w-full text-center text-3xl gap-1 px-2 my-1">
-                    <h3 class="w-1/6 text-lg">{{ index + 1 }}.</h3>
-                    <DiceRow class="w-4/6" :items="rolls.roll"/>
-                    <h3 class="w-1/6 text-lg">{{ rolls.score }}</h3>
-                </li>
-            </ul>
-            <h5 v-if="history.value.length < 1">No recorded rolls.</h5>
+            <div class="flex flex-col md:flex-row justify-evenly self-center w-full m-1">
+                <div v-for="(player, index) in players">
+                    <div class="flex flex-row justify-evenly">
+                        <h5>Player {{ index + 1 }}</h5>
+                        <h5>Score: {{ player.getScore() }}</h5>
+                    </div>
+                    <ul class="list-decimal w-fit text-xl">
+                        <li v-for="(rolls, index) in player.history.value" class="flex flex-row justify-evenly items-center align-center rounded-md border-neutral-900 border-b-2 w-full text-center text-3xl gap-1 px-2 my-1">
+                            
+                            <DiceRow class="w-4/6" :items="rolls.roll"/>
+                            <h3 class="w-1/6 text-lg">{{ rolls.score }}</h3>
+                        </li>
+                    </ul>
+                    <h5 v-if="player.history.value.length < 1">No recorded rolls.</h5>
+                </div>  
+            </div>
             <button 
                 type="button"
                 title="Close Popup" 

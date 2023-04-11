@@ -80,4 +80,8 @@ export class Player {
     isDieLocked(index) {
         return this.lockedRoll.value.includes(index)
     };
+    // Get the score from history
+    getScore() {
+        return this.history.value.reduce((acc, roll) => acc + roll.score, 0);
+    }
 }
