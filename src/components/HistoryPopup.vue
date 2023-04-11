@@ -20,7 +20,7 @@ export default {
                 <h1 class="md:text-2xl sm:text-md font-bold">History</h1>
                 <h4>Latest first</h4>
             </div>
-            <div class="flex flex-col md:flex-row justify-evenly self-center w-full m-1">
+            <div class="flex flex-col md:flex-row justify-evenly items-center self-center w-full m-1">
                 <div v-for="(player, index) in players">
                     <div class="flex flex-row justify-evenly">
                         <h5>Player {{ index + 1 }}</h5>
