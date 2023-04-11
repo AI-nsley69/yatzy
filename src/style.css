@@ -17,9 +17,7 @@ html {
   @apply text-3xl text-primary-content;
 }
 
-.dice-row > i {
-  @apply text-4xl;
-}
+
 
 .info-row > button {
   @apply text-2xl;
