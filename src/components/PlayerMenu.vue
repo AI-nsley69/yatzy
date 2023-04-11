@@ -38,8 +38,14 @@ export default {
         title="Roll Dice"
         @click="player.rollDice(); $emit('roll')"
         class="bg-primary text-primary-content rounded-xl sm:h-4 sm:w-12 md:h-6 w-2/5 lg:h-10 lg:w-2/5 md:mt-2 sm:mt-2 p-1 md:text-md sm:text-sm lg:text-xl active:bg-primary-focus shadow-md border-2 border-orange-900 border-opacity-30"
+        v-bind:class="player.canRoll() ? '' : 'locked-button'"
       >
-        Roll
+        Roll ({{ player.remainingRolls }})
       </button>
     </div>
 </template>
+<style>
+.locked-button {
+  @apply bg-primary-focus cursor-default;
+}
+</style>

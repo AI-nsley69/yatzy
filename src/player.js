@@ -5,6 +5,7 @@ export class Player {
     constructor(prefix) {
         this.prefix = prefix;
         this.currentRoll = [ref(1), ref(1), ref(1), ref(1), ref(1)];
+        this.remainingRolls = ref(3);
         this.lockedRoll = ref([]);
         this.totalScore = ref(5);
         this.history = ref(this.readState());
@@ -29,8 +30,12 @@ export class Player {
         }].concat(this.history.value).slice(0, 10);
         this.saveState(this.history.value);
     };
+    canRoll() {
+      return this.remainingRolls.value > 0;
+    }
     // Roll the dice
     rollDice() {
+        if (!this.canRoll()) return;
         for (let i = 0; i < this.currentRoll.length; i++) {
           if (!this.isDieLocked(i)) {
             this.currentRoll[i].value = Math.floor(Math.random() * 6) + 1;
@@ -38,6 +43,7 @@ export class Player {
         }
         this.totalScore.value = this.currentRoll.reduce((acc, die) => acc + die.value, 0);
     
+        this.remainingRolls.value--;
         this.appendToHistory();
       };
     // Reset the game
