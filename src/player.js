@@ -44,15 +44,16 @@ export class Player {
         this.totalScore.value = this.currentRoll.reduce((acc, die) => acc + die.value, 0);
     
         this.remainingRolls.value--;
-        this.appendToHistory();
+        if (!this.canRoll()) this.appendToHistory();
       };
-    // Reset the game
-    reset()  {
+    // Reset per round
+    reset() {
         this.totalScore.value = 5;
         this.currentRoll.forEach((die) => {
           die.value = 1;
         });
         this.lockedRoll.value = [];
+        this.remainingRolls.value = 3;
     };
     // Reset the game and clear the history
     hardReset() {
