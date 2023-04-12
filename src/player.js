@@ -48,10 +48,10 @@ export class Player {
         this.totalScore.value = this.currentRoll.reduce((acc, die) => acc + die.value, 0);
     
         this.remainingRolls.value--;
-        if (!this.canRoll()) this.appendToHistory();
       };
     // Reset per round
     reset() {
+        this.appendToHistory();
         this.totalScore.value = 5;
         this.currentRoll.forEach((die) => {
           die.value = 1;
@@ -65,6 +65,7 @@ export class Player {
         this.history.value = [];
         this.saveState();
     };
+    // Toggle the lock on a certain die
     toggleDieLock(index) {
         if (this.isDieLocked(index)) {
           this.unlockDie(index);
