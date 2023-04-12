@@ -3,13 +3,20 @@
 </script>
 
 <template>
-    <div class="wrapper bg-info text-sm w-4/5 md:w-3/5 md:text-lg blur-none shadow-lg p-4 justify-center m-3">
+    <div class="wrapper bg-info text-sm w-4/5 md:w-3/5 md:text-lg blur-none shadow-lg p-4 justify-center m-3 gap-2">
         <h1 class="font-bold">Information</h1>
-        <ul class="list-disc text-neutral-content w-fit">
-            <li>This is a simple yatzy site, you can roll 5 dices at once and see your 10 latest rolls.</li>
-            <li>This site was built through Vue and TailwindCSS using Vite as the building tooling.</li>
-            <li>If you wish to check out the source, you can find it <a href="https://github.com/AI-nsley69/yatzy" class="link">here!</a></li>
-            <li>If you're interested in my other projects, you can find them on my <a href="https://portfolio.trainsley69.me" class="link">portfolio</a>.</li>
+        <ul class="list-disc text-neutral-content w-full border-b-2 rounded-sm p-2">
+            <li>This is a simple yatzy site with a 2 player system with 10 rounds</li>
+            <li>Each player has 5 dices they can roll</li>
+            <li>Every round, each player gets 3 rolls and can lock any number of them</li>
+            <li>After every player has exhausted their rolls, they can advance the rounds by pressing the arrow button</li>
+            <li>Each round is recorded in the history popup, and after the 10th round you can see who won the game by comparing the scores in their</li>
+            <li>You can also reset the entire game by pressing the trashcan icon</li>
+        </ul>
+        <ul class="list text-neutral-content w-full p-2">
+            <li>Built with <i class="fa-brands fa-vuejs"></i></li>
+            <li>Source code is available <a href="https://github.com/AI-nsley69/yatzy" class="link">here!</a></li>
+            <li>My <a href="https://portfolio.trainsley69.me" class="link">portfolio</a> for anyone curious :)</li>
         </ul>
         <button 
                 type="button"
