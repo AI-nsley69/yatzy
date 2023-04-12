@@ -5,11 +5,18 @@
   import PlayerMenu from './components/PlayerMenu.vue';
   import { Player } from './player.js';
 
+  const createPlayers = (amount) => {
+    const players = [];
+    for (let i = 0; i < amount; i++) {
+      const id = i + 1;
+      players.push(new Player(`p${id}`, `Player ${id}`));
+    }
+
+    return players;
+  }
+
   // Setup the players
-  const players = [
-    new Player('p1'),
-    new Player('p2'),
-  ];
+  const players = createPlayers(2);
 
   // Setup popup control
   const Popups = {
@@ -50,8 +57,10 @@
   </div>
   <div class="flex flex-col px-8 py-8 justify-center self-center" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
     <div class="flex flex-row justify-evenly gap-4">
-      <PlayerMenu :player="players[0]" :key="renderKey" @roll="forceRerender()"/>
-      <PlayerMenu :player="players[1]" :key="renderKey" @roll="forceRerender()"/>
+      <div v-for="player in players" class="flex flex-col gap-1">
+        <h5>{{ player.name }}</h5>
+        <PlayerMenu :player="player" :key="renderKey" @roll="forceRerender()"/>
+      </div>
     </div>
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-48 h-10 rounded-xl self-center my-4 border-2 border-purple-900 border-opacity-30">
       <button type="button" class="button" title="Information button" @click="activePopup = Popups.INFO"><i class="fa-solid fa-question text-info"></i></button>

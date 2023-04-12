@@ -23,7 +23,7 @@ export default {
             <div class="flex flex-col md:flex-row justify-evenly items-center self-center w-full m-1">
                 <div v-for="(player, index) in players">
                     <div class="flex flex-row justify-evenly">
-                        <h5>Player {{ index + 1 }}</h5>
+                        <h5>{{ player.name }}</h5>
                         <h5>Score: {{ player.getScore() }}</h5>
                     </div>
                     <ul class="list-decimal w-fit text-xl">

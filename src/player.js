@@ -2,8 +2,12 @@ import { ref } from 'vue';
 
 export class Player {
     // The constructor takes a prefix for the local storage key
-    constructor(prefix) {
+    constructor(prefix, name) {
+      // Used the prefix as a local storage key
         this.prefix = prefix;
+        // Display name
+        this.name = name;
+
         this.currentRoll = [ref(1), ref(1), ref(1), ref(1), ref(1)];
         this.remainingRolls = ref(3);
         this.lockedRoll = ref([]);
