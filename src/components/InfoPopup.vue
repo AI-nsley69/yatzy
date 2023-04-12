@@ -7,10 +7,10 @@
         <h1 class="font-bold">Information</h1>
         <ul class="list-disc text-neutral-content w-full border-b-2 rounded-sm p-2">
             <li>This is a simple yatzy site with a 2 player system with 10 rounds</li>
-            <li>Each player has 5 dices they can roll</li>
+            <li>Each player has 5 dice they can roll</li>
             <li>Every round, each player gets 3 rolls and can lock any number of them</li>
             <li>After every player has exhausted their rolls, they can advance the rounds by pressing the arrow button</li>
-            <li>Each round is recorded in the history popup, and after the 10th round you can see who won the game by comparing the scores in their</li>
+            <li>Each round is recorded in the history popup, and after the 10th round you can see who won the game by comparing the scores in the history menu</li>
             <li>You can also reset the entire game by pressing the trashcan icon</li>
         </ul>
         <ul class="list text-neutral-content w-full p-2">
