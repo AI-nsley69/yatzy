@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-    <div class="flex flex-row justify-evenly gap-2 m-1">
+    <div class="flex flex-row justify-evenly gap-2 m-1 w-full">
         <i v-for="item in items" :class="['fas', getDiceNames(item)]"></i>
     </div>
 </template>
