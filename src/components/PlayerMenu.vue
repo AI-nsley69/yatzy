@@ -26,7 +26,7 @@ export default {
       <div class="flex flex-row justify-evenly gap-2 dice-row text-3xl lg:text-4xl w-3/5">
         <DiceRow :items="player.currentRoll"/>
       </div>
-      <div class="flex flex-row justify-evenly dice-row text-lg lg:text-xl w-full lg:w-3/5">
+      <div class="flex flex-row justify-evenly dice-row text-lg lg:text-xl w-3/5">
         <div v-for="(roll, index) in player.currentRoll">
           <button @click="lockPress(index); $emit('roll')" class="w-1/5">
             <i class="fa-solid" v-bind:class="player.isDieLocked(index) ? 'fa-lock' : 'fa-lock-open'"></i>

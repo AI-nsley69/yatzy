@@ -28,7 +28,6 @@ export default {
                     </div>
                     <ul class="list-decimal w-fit text-xl">
                         <li v-for="(rolls, index) in player.history.value" class="flex flex-row justify-evenly items-center align-center rounded-md border-neutral-900 border-b-2 w-full text-center text-3xl gap-1 px-2 my-1">
-                            
                             <DiceRow class="w-4/6" :items="rolls.roll"/>
                             <h3 class="w-1/6 text-lg">{{ rolls.score }}</h3>
                         </li>

@@ -89,8 +89,8 @@
       <h1 class="border-r-2 rounded-sm pr-4">Round {{ currentRound }}</h1>
       <button class="button" @click="switchRounds()"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
-    <div class="flex flex-row justify-evenly gap-4">
-      <div v-for="player in players" class="flex flex-col gap-1">
+    <div class="flex flex-col md:flex-row justify-evenly gap-4">
+      <div v-for="player in players" class="flex flex-col gap-1 m-4 lg:m-0">
         <h5>{{ player.name }}</h5>
         <PlayerMenu :player="player" :key="renderKey" @roll="onRoll()"/>
       </div>
