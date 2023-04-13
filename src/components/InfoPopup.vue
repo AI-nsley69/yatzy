@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="wrapper bg-info text-sm w-4/5 md:w-3/5 md:text-lg blur-none shadow-lg p-4 justify-center m-3 gap-2">
+    <div class="wrapper bg-info text-sm w-4/5 max-w-2xl md:w-3/5 md:text-lg blur-none shadow-lg p-4 justify-center m-3 gap-2 overflow-y-scroll">
         <h1 class="font-bold">Information</h1>
         <ul class="list-disc text-neutral-content w-full border-b-2 rounded-sm p-2">
             <li>This is a simple yatzy site with a 2 player system with 10 rounds</li>
