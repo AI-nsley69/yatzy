@@ -22,7 +22,7 @@
                 type="button"
                 title="Close Popup" 
                 @click="$emit('close')"
-                class="close-button"
+                class="close-button popup-button"
             >
                 Close
             </button>

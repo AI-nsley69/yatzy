@@ -2,6 +2,7 @@
   import { ref } from 'vue';
   import HistoryPopup from './components/HistoryPopup.vue';
   import InfoPopup from './components/InfoPopup.vue';
+  import DeleteConfirmation from './components/DeleteConfirmation.vue';
   import PlayerMenu from './components/PlayerMenu.vue';
   import { Player } from './player.js';
 
@@ -34,6 +35,7 @@
     NONE: 0,
     HISTORY: 1,
     INFO: 2,
+    DELETE: 3,
   }
 
   const activePopup = ref(Popups.NONE);
@@ -98,7 +100,7 @@
     <div class="info-row flex flex-row justify-evenly items-center bg-secondary-content w-48 h-10 rounded-xl self-center my-4 border-2 border-purple-900 border-opacity-30">
       <button type="button" class="button" title="Information button" @click="activePopup = Popups.INFO"><i class="fa-solid fa-question text-info"></i></button>
       <button type="button" class="button" title="Toggle history popup" @click="activePopup = Popups.HISTORY"><i class="fa-solid fa-clock-rotate-left text-success"></i></button>
-      <button type="button" class="button" title="Clear history rolls" @click="fullReset()"><i class="fa-solid fa-trash text-error"></i></button>
+      <button type="button" class="button" title="Clear history rolls" @click="activePopup = Popups.DELETE"><i class="fa-solid fa-trash text-error"></i></button>
     </div>
   </div>
 
@@ -106,6 +108,7 @@
 
   <HistoryPopup v-if="activePopup === Popups.HISTORY" :players="players" @close="closePopup()" />
   <InfoPopup v-if="activePopup === Popups.INFO" @close="closePopup()" />
+  <DeleteConfirmation v-if="activePopup === Popups.DELETE" @close="closePopup()" @delete="fullReset()"/>
 </template>
 
 <style>
