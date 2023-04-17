@@ -3,9 +3,9 @@
 </script>
 
 <template>
-<div class="wrapper w-4/5 lg:w-2/5">
+<div class="wrapper w-4/5 lg:w-2/5 text-center">
     <h3>Are you sure you wish to fully reset the game?</h3>
-    <h5 class="text-error">This will reset your entire history, current rolls and rounds played!</h5>
+    <h5 class="text-error mb-4">This will reset your entire history, current rolls and rounds played!</h5>
     <div class="flex flex-row justify-evenly w-full">
     <button 
         type="button"
