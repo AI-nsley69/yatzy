@@ -9,7 +9,7 @@
     <div class="flex flex-row justify-evenly w-full">
     <button 
         type="button"
-        class="bg-error popup-button border-red-900"
+        class="bg-error popup-button border-red-900 hover:contrast-200"
         @click="$emit('delete'); $emit('close')"
         >
     Yes I'm sure

@@ -39,7 +39,7 @@ export default {
                 type="button"
                 title="Close Popup" 
                 @click="$emit('close')"
-                class="close-button popup-button"
+                class="close-button popup-button button"
             >
                 Close
             </button>
