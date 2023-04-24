@@ -88,12 +88,12 @@
   </div>
   <div class="flex flex-col px-8 py-8 justify-center self-center" v-bind:class="isPopupActive() ? 'blur-sm' : ''">
     <div class="flex flex-row justify-center rounded-lg bg-neutral-500 border-4 border-neutral-700 mx-auto mb-4 px-4 py-2 text-2xl lg:text-3xl gap-4">
-      <h1 class="border-r-2 rounded-sm pr-4">Round {{ currentRound }}</h1>
+      <h2 class="border-r-2 rounded-sm pr-4">Round {{ currentRound }}</h2>
       <button class="button" @click="switchRounds()"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
     <div class="flex flex-col md:flex-row justify-evenly gap-4">
       <div v-for="player in players" class="flex flex-col gap-1 m-4 lg:m-0 lg:mb-4">
-        <h5>{{ player.name }}</h5>
+        <h3>{{ player.name }}</h3>
         <PlayerMenu :player="player" :key="renderKey" @roll="onRoll()"/>
       </div>
     </div>
@@ -104,11 +104,19 @@
     </div>
   </div>
 
-  <a v-if="isPopupActive()" class="popup-background" @click="closePopup()"></a>
+  <Transition>
+    <a v-if="isPopupActive()" class="popup-background" @click="closePopup()"></a>
+  </Transition>
 
-  <HistoryPopup v-if="activePopup === Popups.HISTORY" :players="players" @close="closePopup()" />
-  <InfoPopup v-if="activePopup === Popups.INFO" @close="closePopup()" />
-  <DeleteConfirmation v-if="activePopup === Popups.DELETE" @close="closePopup()" @delete="fullReset()"/>
+  <Transition name="popup-transition">
+    <HistoryPopup v-if="activePopup === Popups.HISTORY" :players="players" @close="closePopup()" />
+  </Transition>
+  <Transition name="popup-transition">
+    <InfoPopup v-if="activePopup === Popups.INFO" @close="closePopup()" />
+  </Transition>
+  <Transition name="popup-transition">
+    <DeleteConfirmation v-if="activePopup === Popups.DELETE" @close="closePopup()" @delete="fullReset()" />
+  </Transition>
 </template>
 
 <style>
@@ -118,5 +126,14 @@
 
 .popup-background {
   @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 cursor-pointer blur-sm;
+}
+
+
+.popup-transition-enter-active, .popup-transition-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.popup-transition-enter-from, .popup-transition-leave-to {
+  opacity: 0;
 }
 </style>

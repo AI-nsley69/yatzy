@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-        <div class="flex flex-col justify-center items-center bg-secondary md:w-64 md:h-48 sm:w-40 sm:h-40 lg:w-96 lg:h-64 rounded-xl p-1 border-4 border-secondary-focus gap-2">
+    <div class="flex flex-col justify-center items-center bg-secondary md:w-64 md:h-48 sm:w-40 sm:h-40 lg:w-96 lg:h-64 rounded-xl p-1 border-4 border-secondary-focus gap-2">
       <div class="lg:text-3xl md:text-2xl sm:text-xl flex flex-row gap-1">
         <h1>Total score: </h1>
         <h1>{{ player.totalScore }}</h1>
@@ -28,6 +28,7 @@ export default {
         <div class="flex flex-row justify-evenly ml-1 w-full">
           <button v-for="(roll, index) in player.currentRoll" 
           @click="lockPress(index); $emit('roll')" 
+          title="lock-die-{{ index + 0 }}"
           class="w-1/5">
             <i class="fa-solid w-5" v-bind:class="player.isDieLocked(index) ? 'fa-lock' : 'fa-lock-open'"></i>
           </button>
