@@ -93,7 +93,7 @@
     </div>
     <div class="flex flex-col md:flex-row justify-evenly gap-4">
       <div v-for="player in players" class="flex flex-col gap-1 m-4 lg:m-0 lg:mb-4">
-        <p>{{ player.name }}</p>
+        <h2>{{ player.name }}</h2>
         <PlayerMenu :player="player" :key="renderKey" @roll="onRoll()"/>
       </div>
     </div>
