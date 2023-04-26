@@ -29,7 +29,7 @@ export default {
           <TransitionGroup name="fade">
             <button v-for="(roll, index) in player.currentRoll" 
             @click="lockPress(index); $emit('roll')" 
-            :title="`${player.prefix}-lock-die-${index + 1}`"
+            :title="`Lock die ${index + 1} for ${player.name}`"
             class="w-1/5">
               <i class="fa-solid w-5" v-bind:class="player.isDieLocked(index) ? 'fa-lock' : 'fa-lock-open'"></i>
             </button>
