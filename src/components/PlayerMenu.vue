@@ -26,12 +26,14 @@ export default {
       <div class="flex flex-col justify-evenly gap-2 dice-row text-3xl lg:text-4xl w-3/5">
         <DiceRow :items="player.currentRoll"/>
         <div class="flex flex-row justify-evenly ml-1 w-full">
-          <button v-for="(roll, index) in player.currentRoll" 
-          @click="lockPress(index); $emit('roll')" 
-          title="lock-die-{{ index + 0 }}"
-          class="w-1/5">
-            <i class="fa-solid w-5" v-bind:class="player.isDieLocked(index) ? 'fa-lock' : 'fa-lock-open'"></i>
-          </button>
+          <TransitionGroup name="fade">
+            <button v-for="(roll, index) in player.currentRoll" 
+            @click="lockPress(index); $emit('roll')" 
+            :title="`${player.prefix}-lock-die-${index + 1}`"
+            class="w-1/5">
+              <i class="fa-solid w-5" v-bind:class="player.isDieLocked(index) ? 'fa-lock' : 'fa-lock-open'"></i>
+            </button>
+          </TransitionGroup>
         </div>
       </div>
       <button 
@@ -48,5 +50,13 @@ export default {
 <style>
 .locked-button {
   @apply bg-primary-focus cursor-default;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.2s;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>
